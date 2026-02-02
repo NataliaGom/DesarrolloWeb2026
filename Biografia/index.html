@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biografía - Natalia Gómez Álvarez</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5e0f4;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    
+    .container {          
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 2.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      margin: 0 0 16px 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #ae9ff3;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ae9ff3;
+      margin: 18px 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 2px solid #e5e7eb;
+      background: #f3f4f6;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .section-title {
+      margin-top: 18px;
+      font-size: 1.1rem;
+      color: #111827;
+    }
+
+    ul, ol {
+      margin: 8px 0 0 18px;
+    }
+
+    form {
+        margin-top: 24px; 
+    }
+
+    fieldset {
+        border: 1px solid #cedbf5;
+        border-radius: 12px;
+        padding: 20px;
+        background-color: #eef2ff;
+    }
+
+    legend.mini-titulos {
+        padding: 0 10px;
+        font-weight: 600;
+        color: #1f2937;
+    }
+
+
+    input, textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+        font-family: inherit;
+        font-size: 0.95rem;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        margin-top: 16px;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 999px;
+        background-color: #6366f1;
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #4f46e5;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="hero">
+        
+        <img class="photo" src="../Imagenes/FotoNat.jpeg" alt="Foto de Natalia Gómez Álvarez" />
+
+        <div>
+          <h1>Biografía</h1>
+          <h2>Natalia Gómez Álvarez</h2>
+          <span class="tag"><b>Nací el 22 de abril de 2002 en CDMX</b></span>
+        </div>
+      </div>
+
+      <hr /> <!-- regla horinzontal para dividir las secciones-->
+
+      <p>
+        Soy Natalia Gómez Álvarez. Nací el 22 de abril de 2002 en la Ciudad de México y mi familia está formada por
+        mis papás y una hermana mayor, con quienes he aprendido el valor de la unión, el esfuerzo y el apoyo constante.
+      </p>
+
+      <p>
+        Desde maternal hasta preparatoria estudié en el <b>Liceo Mexicano Japonés</b>. Esta etapa fue clave para mí,
+        porque me ayudó a desarrollar disciplina, respeto por distintas culturas y una forma de trabajar organizada.
+        También fortalecí habilidades como la comunicación, el trabajo en equipo y la constancia.
+      </p>
+
+      <p>
+        Más adelante ingresé al <b>ITAM</b> para estudiar <b>Ingeniería en Computación</b>. Me interesa la tecnología
+        por su capacidad de resolver problemas reales y crear soluciones útiles. Me motiva aprender, mejorar mis habilidades
+        y aplicar lo que estudio en proyectos prácticos.
+      </p>
+
+      <p>
+        En mi tiempo libre disfruto mantenerme activa y equilibrar mi vida académica con actividades que me gustan.
+        Me encanta el tenis y el pádel, pasar tiempo con mis perros (Yargo, Drako y Rolo) y practicar equitación. Estas actividades me ayudan
+        a liberar estrés, mantener disciplina y disfrutar del día a día.
+      </p>
+
+      <hr />
+
+      <h2 class="section-title">Intereses personales</h2>
+      <div class="hero">
+  
+        <ul>
+            <li>Tenis</li>
+            <li>Pádel</li>
+            <li>Mis perros</li>
+            <li>Equitación</li>
+            <li>Cine y películas</li>
+        </ul>
+
+        <img class="photo" src="../Imagenes/FotoPerros.jpeg" alt="Foto de mis perros"/>
+
+      </div>
+
+      <h2 class="section-title">Metas a corto plazo</h2>
+      <ol>
+        <li>Graduarme y realizar una maetsría en el extranjero</li>
+        <li>Aprender francés o italiano</li>
+        <li>Seguir aprendiendo programación con proyectos que tengan un verdadero impacto en el mundo</li>
+      </ol>
+
+      <hr />
+      <form action=" " method="post">
+        <fieldset>
+            <legend class="mini-titulos">Hazme una pregunta</legend>
+
+            <label for="fullname">Nombre completo:</label>
+            <input type="text" id="fullname" name="fullname" required autocomplete="name" />
+
+            <label for="tenisText">¿Qué quieres saber de mi?</label>
+            <textarea id="tenisText" name="tenisText" rows="4" cols="50" required> </textarea>
+    
+        </fieldset>
+        <button type="submit">Enviar</button>
+    </form>
+      <p class="footer">
+        Puedes ver más información sobre el ITAM aquí:
+        <a href="https://www.itam.mx/" target="_blank">Sitio oficial del ITAM</a>
+      </p>
+      <p class="footer">
+        Si quieres conocerme más, ve a mi Instagram:
+        <a href="https://www.instagram.com/_natalia_gomez_22/" target="_blank">_natalia_gomez_22</a>
+    </p>
+    </div>
+  </div>
+</body>
+</html>
