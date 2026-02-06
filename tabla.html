@@ -4,10 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TablaComparativa</title>
+    <style>
+      body{
+        background-color: beige;
+      }
+      #titulo-principal{
+            font-size: 24px;
+      }
+
+      h1{
+        color:white;
+        background-color: rgba(245, 142, 249, 0.745);
+      }
+      div{
+        background-color: aliceblue;
+      }
+      .margenes{
+        margin-top: 50px;
+      }
+      .margen-izq{
+        margin-left: 170px;
+      }
+
+      .espaciado{
+        padding: 30px;
+      }
+      .mini-titulos{
+        color:purple;
+        font-size: 25px;
+      }
+      thead{
+        background-color: rgba(252, 128, 192, 0.577);
+      }
+      
+    </style>
 </head>
 <body>
-<table border="1">
-  <caption>Comparativa de los Torneos Grand Slam de Tenis</caption>
+<h1 id="titulo-principal">Fanáticos del tenis</h1>
+<div class="margenes margen-izq">
+<table border="1" >
+  <caption class="mini-titulos">Comparativa de los Torneos Grand Slam de Tenis</caption>
 
   <thead>
     <tr>
@@ -71,9 +107,11 @@
     </tr>
   </tfoot>
 </table>
+</div>
+<div class="margenes espaciado">
 <form action=" " method="post">
   <fieldset>
-    <legend>Registro de usuario</legend>
+    <legend class="mini-titulos">Registro de usuario</legend>
 
     <label for="fullname">Nombre completo:</label>
     <input type="text" id="fullname" name="fullname" required autocomplete="name" />
@@ -84,9 +122,18 @@
     <label for="password">Contraseña:</label>
     <input type="password" id="password" name="password" required autocomplete="new-password" />
     <label for="tenisText">¿Qué es el tenis para ti?</label>
+    <textarea id="tenisText" name="tenisText" 
+      rows="4" 
+      cols="50" 
+      required> 
+    </textarea>
     
   </fieldset>
   <button type="submit">Enviar</button>
 </form>
+</div>
+<div align="center">
+    <img src="Imagenes/GrandSlams.jpg" alt="Grand Slam" width="400">
+</div>
 </body>
 </html>
