@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Eventos</title>
+	</head>
+	<body>
+		<button onclick="mostrarImagen()">Mostrar Imagen</button>
+		<button onclick="ocultarImagen()">Ocultar Imagen</button>
+
+		<img
+			id="foto"
+			src="../Imagenes/FotoPerros.jpeg"
+			alt="Foto de mis perros"
+			style="display: none; width: 400px"
+			onmouseover="mostrarMensaje()"
+			onmouseout="ocultarMensaje()" />
+
+		<p id="mensaje"></p>
+
+		<script>
+			function mostrarImagen() {
+				document.getElementById("foto").style.display = "block";
+			}
+
+			function ocultarImagen() {
+				document.getElementById("foto").style.display = "none";
+			}
+
+			function mostrarMensaje() {
+				const mensajeElemento = document.getElementById("mensaje");
+				mensajeElemento.textContent = "Estas sobre la imagen";
+			}
+
+			function ocultarMensaje() {
+				const mensajeElemento2 = document.getElementById("mensaje");
+				mensajeElemento2.textContent = " ";
+			}
+		</script>
+	</body>
+</html>
