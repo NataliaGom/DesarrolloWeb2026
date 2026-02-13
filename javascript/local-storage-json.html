@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>JSON en local storage</title>
+	</head>
+
+	<body>
+		<style>
+			button {
+				background-color: rgb(209, 181, 234);
+			}
+		</style>
+
+		<h1>Ejemplo de local storage</h1>
+
+		<form
+			action=" "
+			method="post">
+			<fieldset>
+				<legend class="mini-titulos">Formulario</legend>
+
+				<label for="fullname">Nombre completo:</label>
+				<input
+					type="text"
+					id="fullname"
+					name="fullname" />
+
+				<label for="email">Color:</label>
+				<input
+					type="color"
+					id="color"
+					name="color" />
+			</fieldset>
+		</form>
+
+		<button onclick="guardarDatosInput()">Guardar Datos</button>
+		<button onclick="verMensajeInput()">Muestra Mensaje</button>
+
+		<div id="resultado"></div>
+
+		<script>
+			function guardarDatos() {
+				const profesor = {
+					nombre: "Fabian",
+					materia: "Desarrollo Web",
+				};
+				console.log(profesor);
+
+				localStorage.setItem("profesor", profesor);
+				localStorage.setItem("profesorTransformado", JSON.stringify(profesor));
+			}
+
+			function muestraMensaje() {
+				const profesor = localStorage.getItem("profesor");
+				console.log(profesor);
+
+				const profesorTransformado = localStorage.getItem(
+					"profesorTransformado",
+				);
+				console.log(profesorTransformado);
+
+				const profesorJSON = JSON.parse(profesorTransformado);
+				console.log(profesorJSON);
+				console.log("materia:", profesorJSON.materia);
+			}
+
+			function guardarDatosInput() {
+				const nombre = document.getElementById("fullname").value;
+
+				const color = document.getElementById("color").value;
+
+				const datos = {
+					nombre: nombre,
+					color: color,
+				};
+
+				localStorage.setItem("datosForm", JSON.stringify(datos));
+			}
+
+			function verMensajeInput() {
+				const datosGuardados = localStorage.getItem("datosForm");
+
+				const datos = JSON.parse(datosGuardados);
+
+				document.getElementById("resultado").textContent =
+					datos.nombre + "  " + datos.color;
+
+				document.getElementById("resultado").style.backgroundColor =
+					datos.color;
+			}
+		</script>
+	</body>
+</html>
