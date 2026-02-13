@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Pagina Asincrona</title>
+	</head>
+
+	<body>
+		<script>
+			fetch("salon.json")
+				.then((respuesta) => {
+					console.log(respuesta);
+
+					return respuesta.json();
+				})
+				.then((datos) => {
+					console.log(datos);
+				})
+				.catch((error) => {
+					console.log("Ocurrió un error al obtener los datos", error);
+				});
+
+			// const llamada = fetch("salon.json");
+			// console.log(llamada);
+		</script>
+	</body>
+</html>
