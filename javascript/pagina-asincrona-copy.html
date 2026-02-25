@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Pagina Asincrona Copy</title>
+	</head>
+
+	<body>
+		<div id="contenedor-llamada"></div>
+		<script>
+			function transformarProfesor(profesor) {
+				console.log("Transfromando profesor", profesor);
+				let resultado = "<div> <h2> " + profesor.nombre + "</h2> <ul>";
+
+				for (let i = 0; i < profesor.intereses_profesionales.length; i++) {
+					resultado += "<li>" + profesor.intereses_profesionales[i] + "</li>";
+				}
+
+				resultado += "</ul> </div>";
+				return resultado;
+			}
+
+			fetch("salon.json") //fetch a los datos
+				.then((respuesta) => {
+					return respuesta.json(); //transformar a json
+				})
+				.then((datos) => {
+					console.log(datos);
+					const contenedor = document.getElementById("contenedor-llamada");
+					contenedor.innerHTML = transformarProfesor(datos.profesor); //transformo json a html y añado a contenedor
+				})
+				.catch((error) => {
+					console.log("Ocurrió un error al obtener los datos", error);
+				});
+
+			// const llamada = fetch("salon.json");
+			// console.log(llamada);
+		</script>
+	</body>
+</html>

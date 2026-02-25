@@ -6,5 +6,23 @@
             "Inteligencia Artificial",
             "Educación"
         ]
-    }
+    },
+    "alumnos": [
+        {
+            "nombre": " Mariana",
+            "intereses": [
+                "Hackeo ético",
+                " IA",
+                " Minería de datos"
+            ]
+        },
+        {
+            "nombre": "Natalia",
+            "intereses": [
+                "Ciberseguridad",
+                " Bases de datos",
+                " Desarrollo web "
+            ]
+        }
+    ]
 }
