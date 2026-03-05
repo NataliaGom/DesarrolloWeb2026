@@ -20,7 +20,7 @@ def read_user(id: int):
         return {"error": "Usuario no encontrado"}
     
 @app.post("/v1/usuarios")
-def create_user(usuario_nombre: str, usuario_edad):
+def create_user(usuario_nombre: str, usuario_edad: int):
     nuevo_id = max(diccionarioUsuarios.keys()) + 1
     
     diccionarioUsuarios[nuevo_id] = {
