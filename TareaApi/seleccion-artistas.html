@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Seleccion Artistas</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+			crossorigin="anonymous" />
+	</head>
+
+	<body class="p-3">
+		<div class="input-group mb-3">
+			<input
+				id="tokenSpotify"
+				type="text"
+				class="form-control"
+				placeholder="Token spotify"
+				aria-label="Token spotify"
+				aria-describedby="button-addon2" />
+			<button
+				class="btn btn-outline-secondary btn-outline-success"
+				type="button"
+				id="button-addon2"
+				onclick="guardarTokenInput()">
+				Guardar
+			</button>
+		</div>
+
+		<div class="form-floating mb-3">
+			<select
+				class="form-select"
+				id="floatingSelect"
+				aria-label="Floating label select example"
+				onchange="guardarCancion()">
+				<option
+					selected
+					class="p-3 mb-2 bg-info-subtle text-info-emphasis"
+					id="cancionSeleccionada">
+					Escoger canción
+				</option>
+				<option
+					value="1"
+					class="p-3 mb-2 bg-info-subtle text-info-emphasis">
+					deja vu
+				</option>
+				<option
+					value="2"
+					class="p-3 mb-2 bg-success-subtle text-info-emphasis">
+					me reúso
+				</option>
+				<option
+					value="3"
+					class="p-3 mb-2 bg-danger-subtle text-info-emphasis">
+					baile inolvidable
+				</option>
+				<option
+					value="4"
+					class="p-3 mb-2 bg-warning-subtle text-info-emphasis">
+					san lucas
+				</option>
+			</select>
+			<label for="floatingSelect">Tracks</label>
+		</div>
+
+		<button
+			class="btn btn-success"
+			type="button"
+			onclick="limpiarPagina()">
+			Limpiar
+		</button>
+
+		<div
+			id="contenedorAlertas"
+			class="mb-3"></div>
+
+		<div
+			id="resultado"
+			class="card d-none"
+			style="width: 22rem">
+			<img
+				id="albumImagen"
+				class="card-img-top"
+				alt="Portada del álbum" />
+			<div class="card-body">
+				<h4 class="card-title mb-3 text-primary-emphasis">
+					Resultado de la canción
+				</h4>
+
+				<p class="mb-3">
+					<strong>Nombre del álbum:</strong> <span id="albumNombre"></span>
+				</p>
+				<p class="mb-1">
+					<strong>Tipo de álbum:</strong> <span id="albumTipo"></span>
+				</p>
+				<p class="mb-1">
+					<strong>Total de canciones:</strong> <span id="albumTotal"></span>
+				</p>
+
+				<h5 class="mb-2 text-primary-emphasis">Artista</h5>
+				<ul
+					id="listaArtistas"
+					class="list-group"></ul>
+			</div>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+			crossorigin="anonymous"></script>
+
+		<script>
+			function guardarTokenInput() {
+				const token = document.getElementById("tokenSpotify").value;
+				sessionStorage.setItem("token", token);
+			}
+
+			function mostrarAlertaError(mensaje) {
+				const contenedor = document.getElementById("contenedorAlertas");
+
+				contenedor.innerHTML = `
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Error:</strong> ${mensaje}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				`;
+			}
+
+			function limpiarAlertas() {
+				document.getElementById("contenedorAlertas").innerHTML = "";
+			}
+
+			function limpiarPagina() {
+				limpiarAlertas();
+				document.getElementById("resultado").classList.add("d-none");
+				document.getElementById("floatingSelect").selectedIndex = 0;
+			}
+
+			function transformarArtista(artista) {
+				// artista arreglo data.artists[]
+				const nombre = artista.name;
+				const url = artista.external_urls.spotify;
+
+				return `
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						<span>${nombre}</span>
+						<a href="${url}" target="_blank" rel="noopener noreferrer" class="link-primary">
+							Ir a Spotify
+						</a>
+					</li>
+				`;
+			}
+
+			function desplegarTrack(data) {
+				limpiarAlertas();
+
+				// Mostrar card
+				const card = document.getElementById("resultado");
+				card.classList.remove("d-none");
+
+				document.getElementById("albumTipo").textContent =
+					data.album.album_type;
+				document.getElementById("albumTotal").textContent =
+					data.album.total_tracks;
+				document.getElementById("albumNombre").textContent = data.album.name;
+
+				const imagen = data.album.images[0].url;
+				document.getElementById("albumImagen").src = imagen;
+
+				//  (arreglo data.artists[])
+				const lista = document.getElementById("listaArtistas");
+				lista.innerHTML = "";
+
+				const artistas = data.artists;
+				for (let i = 0; i < artistas.length; i++) {
+					lista.innerHTML += transformarArtista(artistas[i]);
+				}
+			}
+
+			function guardarCancion() {
+				const select = document.getElementById("floatingSelect");
+				const valor = select.value;
+
+				let trackId = "";
+
+				if (valor === "1") {
+					trackId = "6HU7h9RYOaPRFeh0R3UeAr";
+				} else if (valor === "2") {
+					trackId = "6De0lHrwBfPfrhorm9q1Xl";
+				} else if (valor === "3") {
+					trackId = "2lTm559tuIvatlT1u0JYG2";
+				} else if (valor === "4") {
+					trackId = "3aZxnqYFM8UI2jLgUD3B2a";
+				} else {
+					limpiarPagina();
+					return;
+				}
+
+				//guardar el id de cada track
+				sessionStorage.setItem("trackId", trackId);
+
+				// recuperar el token
+				const token = sessionStorage.getItem("token");
+
+				if (!token) {
+					mostrarAlertaError("Primero debes guardar el token de Spotify.");
+					return;
+				}
+
+				const parametros = {
+					method: "GET",
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				};
+
+				fetch(`https://api.spotify.com/v1/tracks/${trackId}`, parametros)
+					.then((respuesta) => {
+						// Manejo de errores HTTP (401, 403, 404, etc.)
+						if (!respuesta.ok) {
+							mostrarAlertaError(
+								`Hubo un error al consultar Spotify (HTTP ${respuesta.status}).`,
+							);
+							return;
+						}
+						return respuesta.json();
+					})
+					.then((datos) => {
+						// Esta función ya pinta en el card (NO devuelve HTML)
+						desplegarTrack(datos);
+					})
+					.catch((error) => {
+						console.error("Error al llamar Spotify:", error);
+						mostrarAlertaError("Hubo un error al llamar a la API de Spotify.");
+					});
+			}
+		</script>
+	</body>
+</html>
