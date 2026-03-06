@@ -236,6 +236,7 @@
 					.catch((error) => {
 						console.error("Error al llamar Spotify:", error);
 						mostrarAlertaError("Hubo un error al llamar a la API de Spotify.");
+						document.getElementById("resultado").classList.add("d-none");
 					});
 			}
 		</script>
