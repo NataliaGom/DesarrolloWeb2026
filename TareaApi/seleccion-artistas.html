@@ -220,7 +220,7 @@
 
 				fetch(`https://api.spotify.com/v1/tracks/${trackId}`, parametros)
 					.then((respuesta) => {
-						// Manejo de errores HTTP (401, 403, 404, etc.)
+						// Manejo de errores HTTP
 						if (!respuesta.ok) {
 							mostrarAlertaError(
 								`Hubo un error al consultar Spotify (HTTP ${respuesta.status}).`,
