@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Fiestas</title>
+	</head>
+	<body>
+		<div id="Fiestas"></div>
+		<script>
+			const url_base = "http://127.0.0.1:8000";
+			function leerFiestas() {
+				fetch(`${url_base}/v1/fiestas`)
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data);
+						const fiestaDiv = document.getElementById("Fiestas");
+						fiestaDiv.textContent = JSON.stringify(data);
+					})
+					.catch((error) => console.log("Error", error));
+			}
+
+			function darFiestaDeAlta() {
+				fetch(`${url_base}/v1/fiesta`)
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data);
+					})
+					.catch((error) => console.log("Error", error));
+			}
+
+			leerFiestas();
+		</script>
+	</body>
+</html>
