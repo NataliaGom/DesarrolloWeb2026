@@ -13,10 +13,10 @@ class SolicitudAdopcion(BaseModel):
     mascotaDeseada: str
     motivo: str
 
-class SolicitudPatch(BaseModel):
+class SolicitudPatch(BaseModel):   
     mascotaDeseada: str | None = None
     motivo: str | None = None
-
+# estado de la solicitud
 class EstadoPatch(BaseModel):
     estado: str = Field(..., pattern="^(pendiente|aceptada|rechazada)$")
 
