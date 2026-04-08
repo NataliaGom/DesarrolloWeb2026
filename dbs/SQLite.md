@@ -83,11 +83,11 @@ Liga: https://www.techradar.com/pro/security/another-worrying-wordpress-plugin-s
 Un ORM (Object-Relational Mapping) es una herramienta que permite interactuar con una base de datos usando objetos y clases de un lenguaje de programación, en lugar de escribir directamente consultas SQL.
 En el desarrollo web, una herramienta de mapeo objeto-relacional (ORM) convierte los datos enviados desde una aplicación orientada a objetos en una base de datos relacional sin necesidad de que la aplicación sepa cómo están estructurados esos datos en la base de datos.
 
-## ¿Cuál es la diferencia entre ORM y SQL?
+### ¿Cuál es la diferencia entre ORM y SQL?
 SQL (lenguaje de consulta estructurado) es el lenguaje estándar que se utiliza para interactuar con bases de datos relacionales. Permite crear y administrar esquemas de bases de datos, insertar y actualizar datos y consultar registros mediante comandos declarativos.
 SQL proporciona un control directo y de bajo nivel sobre la base de datos. ORM proporciona una interfaz más abstracta y de nivel superior, lo que a menudo acelera el desarrollo y hace que el código sea más fácil de mantener.
 
-## ¿Cuáles son los beneficios de usar el mapeo objeto-relacional?
+### ¿Cuáles son los beneficios de usar el mapeo objeto-relacional?
 
 - **Desarrollo de aplicaciones más rápido:** Pueden gestionar las operaciones rutinarias de las bases de datos, como la creación, la lectura, la actualización y la eliminación de registros (CRUD), de modo que los desarrolladores no tengan que codificar estas operaciones repetidamente en la aplicación.
 - **Mantenimiento de aplicaciones más sencillo:** Al resumir las consultas de la base de datos a través de un ORM, los desarrolladores pueden trabajar en un solo idioma, lo que hace que su código sea más fácil de entender y mantener.
