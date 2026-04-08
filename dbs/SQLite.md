@@ -47,7 +47,9 @@ AFTER INSERT, UPDATE, DELETE
 AS
 {sql_statements}
 ```
-## ¿Qué es SQL Injection? ¿Qué implicaciones tiene?
+---
+
+## 4. ¿Qué es SQL Injection? ¿Qué implicaciones tiene?
 
 La inyección de SQL es un tipo de ciberataque encubierto en el cual un hacker inserta código propio en un sitio web con el fin de quebrantar las medidas de seguridad y acceder a datos protegidos. Una vez dentro, puede controlar la base de datos del sitio web y secuestrar la información de los usuarios.
 
@@ -74,6 +76,32 @@ Liga: https://en.iguru.gr/tesla-motors-blind-sql-injection/
 - **Caso WordPress:** Una vulnerabilidad crítica de tipo SQL Injection fue descubierta en el plugin “Ally” de WordPress, utilizado por más de 400,000 sitios web. Este fallo permitía a atacantes no autenticados manipular consultas SQL y potencialmente extraer información sensible mediante técnicas como time-based blind SQL injection. A pesar de que el problema fue corregido en una actualización, más del 60% de los sitios seguían siendo vulnerables semanas después, lo que evidencia el riesgo persistente asociado a plugins desactualizados en plataformas ampliamente utilizadas. 
 Liga: https://www.techradar.com/pro/security/another-worrying-wordpress-plugin-security-flaw-could-put-250-000-websites-at-risk
 
+---
 
+## 5. ¿Qué es un ORM y qué diferencias existen con escribir sentencias de SQL comunes?
+
+Un ORM (Object-Relational Mapping) es una herramienta que permite interactuar con una base de datos usando objetos y clases de un lenguaje de programación, en lugar de escribir directamente consultas SQL.
+En el desarrollo web, una herramienta de mapeo objeto-relacional (ORM) convierte los datos enviados desde una aplicación orientada a objetos en una base de datos relacional sin necesidad de que la aplicación sepa cómo están estructurados esos datos en la base de datos.
+
+## ¿Cuál es la diferencia entre ORM y SQL?
+SQL (lenguaje de consulta estructurado) es el lenguaje estándar que se utiliza para interactuar con bases de datos relacionales. Permite crear y administrar esquemas de bases de datos, insertar y actualizar datos y consultar registros mediante comandos declarativos.
+SQL proporciona un control directo y de bajo nivel sobre la base de datos. ORM proporciona una interfaz más abstracta y de nivel superior, lo que a menudo acelera el desarrollo y hace que el código sea más fácil de mantener.
+
+## ¿Cuáles son los beneficios de usar el mapeo objeto-relacional?
+
+- **Desarrollo de aplicaciones más rápido:** Pueden gestionar las operaciones rutinarias de las bases de datos, como la creación, la lectura, la actualización y la eliminación de registros (CRUD), de modo que los desarrolladores no tengan que codificar estas operaciones repetidamente en la aplicación.
+- **Mantenimiento de aplicaciones más sencillo:** Al resumir las consultas de la base de datos a través de un ORM, los desarrolladores pueden trabajar en un solo idioma, lo que hace que su código sea más fácil de entender y mantener.
+- **Seguridad Mejorada:** Un ataque de inyección de código SQL es un intento malintencionado de acceder a datos privados mediante el envío de consultas SQL a través de los formularios de usuario de la aplicación. Los ORM utilizan consultas parametrizadas, que primero envían a la base de datos una consulta con valores de marcador de posición, no con datos reales. Esto garantiza que la entrada del usuario se trate como datos, no como código SQL ejecutable.
+
+## Referencias
+- Amazon Web Services. (s.f.). What is Object-Relational Mapping (ORM)? https://aws.amazon.com/what-is/object-relational-mapping/
+
+- PortSwigger. (s.f.). SQL injection. https://portswigger.net/web-security/sql-injection
+
+- Alura Cursos. (s.f.). ¿Qué es y cómo usar trigger en SQL? https://www.aluracursos.com/blog/que-es-y-como-trigger-en-sql
+
+- Microsoft. (s.f.). Transactions (Transact-SQL). https://learn.microsoft.com/es-es/sql/t-sql/language-elements/transactions-transact-sql
+
+- Dremio. (s.f.). Database transaction. https://www.dremio.com/wiki/database-transaction/
 
 
