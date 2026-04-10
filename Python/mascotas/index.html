@@ -12,10 +12,73 @@
 			crossorigin="anonymous" />
 		<title>Mascotas</title>
 	</head>
-	<body>
+	<body class="bg-light">
+		<div class="container py-4">
+			<h1 class="mb-4">Sistema de solicitudes de adopción</h1>
+
+			<form
+				onsubmit="crearSolicitud(event)"
+				class="mb-4">
+				<h5>Crear solicitud</h5>
+
+				<input
+					class="form-control mb-2"
+					placeholder="Nombre"
+					id="nombrePersona" />
+				<input
+					class="form-control mb-2"
+					placeholder="Mascota deseada"
+					id="mascotaDeseada" />
+				<input
+					class="form-control mb-2"
+					placeholder="Motivo"
+					id="motivo" />
+
+				<button class="btn btn-info">Crear</button>
+			</form>
+
+			<form
+				onsubmit="buscarSolicitud(event)"
+				class="mb-4">
+				<h5>Buscar solicitud por ID</h5>
+
+				<input
+					class="form-control mb-2"
+					placeholder="UUID"
+					id="buscarId" />
+
+				<button class="btn btn-info">Buscar</button>
+			</form>
+
+			<button
+				class="btn btn-info"
+				onclick="obtenerSolicitudes()">
+				Mostrar solicitudes
+			</button>
+
+			<div
+				id="resultadoBusqueda"
+				class="mb-4"></div>
+			<div id="informacion"></div>
+		</div>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 			crossorigin="anonymous"></script>
+		<script>
+			const baseUrl = "https://desarrolloweb2026.onrender.com";
+
+			function crearSolicitud1() {
+				fetch(baseUrl + "/solicitudes")
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data);
+						const informacion = document.getElementById("Informacion");
+						informacion.textContent = JSON.stringify(data);
+					})
+					.catch((error) => console.log("Error", error));
+			}
+			crearSolicitud1();
+		</script>
 	</body>
 </html>
