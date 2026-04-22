@@ -109,3 +109,4 @@ def delete_persona(id_persona: int):
     if filas_afectadas == 0:
         raise HTTPException(status_code=404, detail="Persona no encontrada")
     return {"message": "Persona eliminada"}
+

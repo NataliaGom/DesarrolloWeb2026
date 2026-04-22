@@ -1,0 +1,21 @@
+.contenedor {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tarjeta {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 220px;
+  text-align: center;
+}
+
+.tarjeta img {
+  width: 100%;
+  height: auto;
+}
+
+.titulo {
+    color: cadetblue;
+}
