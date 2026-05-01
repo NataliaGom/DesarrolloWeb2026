@@ -98,9 +98,9 @@ La más avanzada. Se centra en la **dependencia de unión**: una tabla solo debe
 | 1 | Ana López | ana@uni.mx | 5551234 | @ana_lopez |
 | 2 | Carlos Ruiz | carlos@uni.mx | 5559876 | NULL |
 
-**Problema:** Esta tabla viola la **1FN** porque tiene grupos repetitivos (`contacto1`, `contacto2`, `contacto3`).
+**Problema:** Esta tabla viola la 1FN porque tiene grupos repetitivos (`contacto1`, `contacto2`, `contacto3`).
 
-Además, genera una **anomalía de inserción**: si un profesor tiene 4 contactos, no se puede registrar sin modificar la estructura de la tabla.
+Además, hace una anomalía de inserción: si un profesor tiene 4 contactos, no se puede registrar sin modificar la estructura de la tabla.
 
 **Solución (aplicando 1FN):**
 
@@ -121,7 +121,7 @@ Además, genera una **anomalía de inserción**: si un profesor tiene 4 contacto
 | 4 | 2 | email | carlos@uni.mx |
 | 5 | 2 | teléfono | 5559876 |
 
-Ahora `id_prof` es **clave foránea** en CONTACTO, tal como el artículo explica el rol de las claves externas al dividir tablas.
+Ahora `id_prof` es llave foránea en CONTACTO. 
 
 ---
 
@@ -137,8 +137,8 @@ Ahora `id_prof` es **clave foránea** en CONTACTO, tal como el artículo explica
 
 **Problemas identificados:**
 
-1. **Viola la 3FN:** `director_depto` depende de `depto`, no de `id_prof` (dependencia transitiva).
-2. **Viola la 1FN / genera redundancia:** Ana López aparece en dos filas porque pertenece a dos departamentos.
+1. **Error en la 3FN:** `director_depto` depende de `depto`, no de `id_prof` (dependencia transitiva).
+2. **Error en la 1FN / genera redundancia:** Ana López aparece en dos filas porque pertenece a dos departamentos.
 3. **Anomalía de eliminación:** Si se elimina a Carlos Ruiz, podríamos perder el dato de que el director de Matemáticas es el Dr. Pérez.
 
 **Solución:**
@@ -165,7 +165,6 @@ Ahora `id_prof` es **clave foránea** en CONTACTO, tal como el artículo explica
 | 2 | 10 |
 | 1 | 20 |
 
-Esto refleja exactamente lo que el artículo muestra con las tablas `EMPLOYEE`, `DEPARTMENT` y `EMPLOYEE_DEPARTMENT` para cumplir la **3FN**.
 
 ---
 
