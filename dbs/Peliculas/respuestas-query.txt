@@ -1,1 +1,68 @@
+Respuestas: 
 
+-- 1. Total de usuarios por país
+SELECT p.nombre AS pais, COUNT(u.id) AS total_usuarios
+FROM Paises p
+JOIN Usuarios u ON p.id = u.pais_id
+GROUP BY p.nombre;
+
+-- 2. Número de actores registrados por película
+SELECT p.titulo as pelicula, COUNT(a.id) as total_actores 
+FROM Peliculas p inner join PeliculaActor a on p.id = a.pelicula_id 
+GROUP BY p.titulo 
+
+-- 3. Películas en las que haya dos o más actores
+SELECT p.titulo AS pelicula
+FROM Peliculas p
+INNER JOIN PeliculaActor pa ON p.id = pa.pelicula_id
+GROUP BY p.titulo
+HAVING COUNT(pa.actor_id) >= 2;
+
+-- 4. Usuarios registrados por año 
+SELECT strftime('%Y', fecha_registro)AS anio, COUNT(*) as total_usuario 
+from Usuarios 
+GROUP by anio
+
+-- 5. Total de usuarios registrados por país y por año
+SELECT p.nombre AS pais, strftime('%Y', u.fecha_registro) AS anio,
+       COUNT(u.id) AS total_usuarios
+FROM Usuarios u
+JOIN Paises p ON u.pais_id = p.id
+GROUP BY p.nombre, strftime('%Y', u.fecha_registro);
+
+
+-- 6. Películas por actor
+SELECT a.nombre AS actor, p.titulo AS pelicula
+FROM Actores a
+JOIN PeliculaActor pa ON a.id = pa.actor_id
+JOIN Peliculas p ON pa.pelicula_id = p.id
+ORDER BY a.nombre;
+
+-- 7. Actores que aparecen en "Los Juegos del Hambre"
+SELECT a.nombre AS actor
+FROM Actores a
+JOIN PeliculaActor pa ON a.id = pa.actor_id
+JOIN Peliculas p ON pa.pelicula_id = p.id
+WHERE p.titulo = 'Los Juegos del Hambre';
+
+-- 8. Minutos acumulados por usuario
+SELECT u.nombre AS usuario, SUM(r.minutos_vistos) AS minutos_totales
+FROM Usuarios u
+JOIN Reproducciones r ON u.id = r.usuario_id
+GROUP BY u.nombre;
+
+-- 9. Películas que no hayan tenido reproducciones
+SELECT p.titulo AS pelicula
+FROM Peliculas p
+LEFT JOIN Reproducciones r ON p.id = r.pelicula_id
+WHERE r.id IS NULL;
+
+-- 10. Actores de películas vistas por usuarios de España
+SELECT DISTINCT a.nombre AS actor
+FROM Actores a
+JOIN PeliculaActor pa ON a.id = pa.actor_id
+JOIN Peliculas pe ON pa.pelicula_id = pe.id
+JOIN Reproducciones r ON pe.id = r.pelicula_id
+JOIN Usuarios u ON r.usuario_id = u.id
+JOIN Paises p ON u.pais_id = p.id
+WHERE p.nombre = 'España';
