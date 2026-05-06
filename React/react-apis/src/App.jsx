@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { NasaDatosDelDia } from "./components/NasaDatosDia.jsx"
 
 function App() {

@@ -1,26 +1,40 @@
-import {useEffect} from "react";
-import {useState} from "react";
+import { useEffect, useState } from "react";
+import { RecursoDelDia } from "./Apod.jsx";
 
+export function NasaDatosDelDia() {
+  // variable de estado para guardar la respuesta de la API
+  const [datosDelDia, setDatosDelDia] = useState(null);
+  // useEffect para sincronizar con info externa, en este caso la API de NASA
+  useEffect(() => {
+    fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=LcUzaxu7d2y4ByUXHW3exnnJECp7GtPE6sOmitk8",
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-export function NasaDatosDelDia(){
-    const [datosDelDia, setDatosDelDia] = useState(null);
+        const datosTransformados = {
+          fecha: data.date,
+          explicacion: data.explanation,
+          tipoContenido: data.media_type,
+          titulo: data.title,
+          url: data.url,
+        };
+        setDatosDelDia(datosTransformados);
+      });
+  }, []);
 
-    useEffect(() => {
-        fetch("https://api.nasa.gov/planetary/apod?api_key=WVwjGIKWFaVexkqugHLAzMzv0DMTFbmn0tPEQmaR")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setDatosDelDia({
-                    fecha: data.date, 
-                    explicacion: data.explanation, 
-                    tipoContenido: data.media_type, 
-                    titulo: data.title, 
-                    url: data.url, 
-                });
-            });
-    },[]);
+  if (datosDelDia === null) {
+    return <p>Cargando...</p>;
+  }
 
-    return(
-        <div>API de nasa</div>
-    );
+  return (
+    <RecursoDelDia
+      fecha={datosDelDia.fecha}
+      explicacion={datosDelDia.explicacion}
+      tipoContenido={datosDelDia.tipoContenido}
+      titulo={datosDelDia.titulo}
+      url={datosDelDia.url}
+    />
+  );
 }
