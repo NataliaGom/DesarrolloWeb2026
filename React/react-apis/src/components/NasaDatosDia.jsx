@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
 import { RecursoDelDia } from "./Apod.jsx";
 
+const todosLosEstilos = [
+  "default",
+  "vintage",
+  "elegante",
+  "anime",
+  "minimalista",
+  "caricatura",
+  "disney",
+  "fosforescente",
+];
+
 export function NasaDatosDelDia() {
   // variable de estado para guardar la respuesta de la API
   const [datosDelDia, setDatosDelDia] = useState(null);
@@ -29,12 +40,19 @@ export function NasaDatosDelDia() {
   }
 
   return (
-    <RecursoDelDia
-      fecha={datosDelDia.fecha}
-      explicacion={datosDelDia.explicacion}
-      tipoContenido={datosDelDia.tipoContenido}
-      titulo={datosDelDia.titulo}
-      url={datosDelDia.url}
-    />
+    <div className="row row-cols-1 row-cols-md-2 g-4">
+      {todosLosEstilos.map((estilo) => (
+        <div className="col" key={estilo}>
+          <RecursoDelDia
+            fecha={datosDelDia.fecha}
+            explicacion={datosDelDia.explicacion}
+            tipoContenido={datosDelDia.tipoContenido}
+            titulo={datosDelDia.titulo}
+            url={datosDelDia.url}
+            estilo={estilo}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
